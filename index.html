@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>PUT it to the test</title>
+  <!-- Public Domain -->
+</head>
+<body>
+  <button>Time to PUT</button>
+  <button>Time to PUT (with delay)</button>
+  <script type="text/javascript">
+
+// Some code is from MDN: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
+
+function reqListener() {
+  window.location.reload()
+}
+function reqListenerWithDelay() {
+  setTimeout(function() {
+    window.location.reload();
+  }, 10);
+}
+
+var btn0 = document.getElementsByTagName('button')[0];
+var btn1 = document.getElementsByTagName('button')[1];
+
+btn0.onclick = function() {
+  var oReq = new XMLHttpRequest();
+  oReq.addEventListener("load", reqListener);
+  oReq.open("PUT", "/");
+  oReq.send();
+};
+btn1.onclick = function() {
+  var oReq = new XMLHttpRequest();
+  oReq.addEventListener("load", reqListenerWithDelay);
+  oReq.open("PUT", "/");
+  oReq.send();
+};
+
+  </script>
+</body>
+</html>
